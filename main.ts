@@ -46,7 +46,7 @@ controller.player2.onButtonEvent(ControllerButton.A, ControllerButtonEvent.Press
             . . . . 4 4 2 2 2 2 4 4 . . . . 
             . . . . . . 4 4 4 4 . . . . . . 
             . . . . . . . . . . . . . . . . 
-            `, p1, -50, 0)
+            `, p2, -50, 0)
         music.pewPew.play()
         p2Shoots += -1
     }
@@ -86,6 +86,7 @@ let enemies_list: Sprite[] = []
 let projectileP2: Sprite = null
 let projectileP1: Sprite = null
 let p2Shoots = 0
+let p2: Sprite = null
 let p1Shoots = 0
 let p1: Sprite = null
 scene.setBackgroundImage(img`
@@ -233,7 +234,7 @@ controller.moveSprite(p1, 0, 100)
 p1.setPosition(10, 50)
 p1.setFlag(SpriteFlag.StayInScreen, true)
 info.setLife(5)
-let p2 = sprites.create(img`
+p2 = sprites.create(img`
     . . . . . f f 4 4 f f . . . . . 
     . . . . f 5 4 5 5 4 5 f . . . . 
     . . . f e 4 5 5 5 5 4 e f . . . 
@@ -256,6 +257,7 @@ controller.player2.moveSprite(p2, 0, 100)
 p2.setPosition(150, 50)
 p2.setFlag(SpriteFlag.StayInScreen, true)
 info.player2.setLife(5)
+music.magicWand.play()
 game.onUpdate(function () {
     enemies_list = sprites.allOfKind(SpriteKind.Enemy)
     for (let enemyIndx of enemies_list) {
